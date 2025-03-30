@@ -1211,6 +1211,98 @@ header.main-header .header-sticky.active{
 	margin: 0;
 }
 
+/****************************************/
+/** Industries section css **************/
+
+.industries-section {
+    padding: 50px 0px 70px;
+    color: white;
+	background-color: var(--bg-color);
+	border: 1px solid var(--divider-color);
+	border-radius: 20px;
+}
+
+.industry-item {
+    position: relative;
+    border-radius: 40px;
+    overflow: hidden;
+    height: calc(100% - 30px);
+    margin-bottom: 30px;
+    padding: 24px;
+    transition: all 0.4s ease-in-out;
+    text-align: center;
+}
+
+.industry-item:hover {
+    transform: translateY(-5px);
+}
+
+.industry-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--white-color);
+    opacity: 5%;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.industry-body {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+    z-index: 1;
+}
+
+.industry-content {
+    width: calc(100% - 68px);
+}
+
+.industry-content h3 {
+    font-size: 20px;
+    text-transform: capitalize;
+    margin-bottom: 15px;
+}
+
+.industry-content p {
+    margin: 0;
+    font-size: 16px;
+}
+
+.industry-btn a {
+    background-color: var(--bg-color);
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease-in-out;
+}
+
+.industry-item:hover .industry-btn a {
+    background-color: var(--accent-color);
+}
+
+.industry-btn a img {
+    max-width: 24px;
+    transform: rotate(-45deg);
+    transition: all 0.4s ease-in-out;
+}
+
+.industry-item:hover .industry-btn a img {
+    filter: brightness(0) invert(0);
+    transform: rotate(0deg);
+}
+
+
+
 /************************************/
 /***       07. Our Work css	      ***/
 /************************************/
@@ -1486,9 +1578,14 @@ header.main-header .header-sticky.active{
 	margin-right: 20px;
 }
 
-.how-work-image-circle img{
-	animation: weworkrotate 20s infinite linear;
+.how-work-image-circle img {
+    animation: weworkrotate 20s infinite linear;
+    width: 80%; /* Reduce width to avoid corners */
+    height: auto;
+    border-radius: 50%; /* Ensures no visible corners */
+    overflow: hidden;
 }
+
 
 .how-it-work-image{
 	position: absolute;
@@ -2335,6 +2432,7 @@ header.main-header .header-sticky.active{
 .page-header-box ol li.breadcrumb-item{
 	font-size: 16px;
 	font-weight: 600;
+	text-align: center;
 	text-transform: capitalize;
 	color: var(--text-color);
 }
@@ -2623,7 +2721,6 @@ header.main-header .header-sticky.active{
     left: -80px;
     top: 100px;
     transform: rotate(24deg);
-    background: url('../images/section-bg-shape-4.png') no-repeat;
     background-position: left center;
     background-size: contain;
     width: 265px;
@@ -2639,7 +2736,6 @@ header.main-header .header-sticky.active{
     position: absolute;
     right: -80px;
     bottom: 150px;
-    background: url('../images/section-bg-shape-1.png') no-repeat;
     background-position: right center;
     background-size: contain;
     width: 254px;
@@ -2649,33 +2745,59 @@ header.main-header .header-sticky.active{
     z-index: -1;
 }
 
-.service-item{
-	position: relative;
-	border-radius: 40px;
-	overflow: hidden;
-	height: calc(100% - 30px);
-	margin-bottom: 30px;
-	padding: 24px;
-	transition: all 0.4s ease-in-out;
+.service-item {
+    position: relative;
+    border-radius: 40px;
+    overflow: hidden;
+    margin-bottom: 30px;
+    padding: 24px;
+    transition: all 0.4s ease-in-out;
+    height: 250px; /* Set a fixed height for uniform size */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    text-align: center; /* Ensure text alignment is centered */
 }
 
-.service-item:hover{
-	transform: translateY(-5px);
+.service-item:hover {
+    transform: translateY(-5px);
 }
 
-.service-item::before{
-	content: '';
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	background: var(--white-color);
-	opacity: 5%;
-	width: 100%;
-	height: 100%;
-	z-index: 0;
+.service-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--white-color);
+    opacity: 5%;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
 }
+
+.service-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+    text-align: center; /* Ensures proper text alignment */
+    max-width: 90%; /* Prevents content from stretching too wide */
+}
+
+.service-content h3 {
+    font-size: 20px; /* Adjust heading size */
+    font-weight: bold;
+    margin-bottom: 10px; /* Space between heading and paragraph */
+}
+
+.service-content p {
+    font-size: 16px;
+    line-height: 1.5; /* Improves readability */
+    margin: 0; /* Removes unwanted margins */
+}
+
 
 .service-image a{
 	display: block;
@@ -5100,7 +5222,7 @@ header.main-header .header-sticky.active{
 	}
 
 	.page-header-box h1{
-		font-size: 50px;
+		font-size: 40px;
 	}
 
 	.page-header-box ol li.breadcrumb-item{

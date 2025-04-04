@@ -34,8 +34,341 @@
 	<link rel="stylesheet" href="css/mousecursor.css">
 	<!-- Main Custom Css -->
 	<link href="css/custom.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
-<body>
+
+<style>
+    /* ===== CORE STYLES ===== */
+    .gradient-icon {
+      display: inline-block;
+      margin-right: 10px;
+      font-size: 1.3em;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    
+    .gradient-icon i {
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-image: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+      display: inline-block;
+      background-size: 200% 200%;
+      will-change: transform, background-position;
+    }
+    
+    /* Base Gradient Animation */
+    .animate-gradient i {
+      animation: gradientFlow 5s ease infinite;
+    }
+    
+    @keyframes gradientFlow {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    
+    /* ===== SERVICE-SPECIFIC ANIMATIONS ===== */
+    /* Healthcare - Heartbeat Throb */
+    .healthcare-animate i {
+      animation: 
+        gradientFlow 5s ease infinite,
+        heartbeat 1.8s ease-out infinite;
+    }
+    
+    @keyframes heartbeat {
+      0%, 70%, 100% { transform: scale(1); }
+      35% { transform: scale(1.25); }
+    }
+    
+    /* Fintech - Coin Spin */
+    .fintech-animate i {
+      animation: 
+        gradientFlow 5s ease infinite,
+        coinSpin 4s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    }
+    
+    @keyframes coinSpin {
+      0% { transform: rotateY(0deg); }
+      100% { transform: rotateY(360deg); }
+    }
+    
+    /* eLearning - Cap Float */
+    .elearning-animate i {
+      animation: 
+        gradientFlow 5s ease infinite,
+        capFloat 6s ease-in-out infinite;
+    }
+    
+    @keyframes capFloat {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-12px) rotate(5deg); }
+    }
+    
+    /* Manufacturing - Gear Turn */
+    .manufacturing-animate i {
+      animation: 
+        gradientFlow 5s ease infinite,
+        gearTurn 8s linear infinite;
+    }
+    
+    @keyframes gearTurn {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    /* Retail - Cart Bounce */
+    .retail-animate i {
+      animation: 
+        gradientFlow 5s ease infinite,
+        cartBounce 2.2s ease infinite;
+    }
+    
+    @keyframes cartBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    /* Travel - Plane Glide */
+    .travel-animate i {
+      animation: 
+        gradientFlow 5s ease infinite,
+        planeGlide 5s ease-in-out infinite;
+    }
+    
+    @keyframes planeGlide {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      25% { transform: translate(8px, -4px) rotate(5deg); }
+      75% { transform: translate(-8px, 4px) rotate(-5deg); }
+    }
+    
+    /* Logistics - Truck Shake */
+    .logistics-animate i {
+      animation: 
+        gradientFlow 5s ease infinite,
+        truckShake 3s ease infinite;
+    }
+    
+    @keyframes truckShake {
+      0%, 100% { transform: translateX(0) rotate(0deg); }
+      25% { transform: translateX(-5px) rotate(-2deg); }
+      75% { transform: translateX(5px) rotate(2deg); }
+    }
+    
+    /* Insurance - Shield Pulse */
+    .insurance-animate i {
+      animation: 
+        gradientFlow 5s ease infinite,
+        shieldPulse 3.5s ease-out infinite;
+    }
+    
+    @keyframes shieldPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+    
+    /* Restaurant - Utensil Swing */
+    .restaurant-animate i {
+      animation: 
+        gradientFlow 5s ease infinite,
+        utensilSwing 4s ease-in-out infinite;
+    }
+    
+    @keyframes utensilSwing {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(20deg); }
+      75% { transform: rotate(-20deg); }
+    }
+    
+    /* ===== INTERACTIVE ELEMENTS ===== */
+    .gradient-icon:hover {
+      transform: scale(1.2);
+    }
+    
+    .gradient-icon:hover i {
+      animation-play-state: paused;
+      filter: 
+        drop-shadow(0 0 8px rgba(255,255,255,0.4))
+        brightness(1.15);
+    }
+    
+    /* ===== PERFORMANCE ENHANCEMENTS ===== */
+    .animate-gradient i {
+      backface-visibility: hidden;
+      transform: translate3d(0,0,0);
+      -webkit-font-smoothing: subpixel-antialiased;
+    }
+
+    .main-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 20px;
+  background-color: transparent;
+}
+
+.main {
+  width: clamp(300px, 90vw, 600px);
+  height: clamp(300px, 90vw, 600px);
+  position: relative;
+}
+
+/* Big Circle with 12 icons */
+.big-circle {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  border: 3px solid #4cc9f0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: Rotate 30s linear infinite;
+}
+
+/* Icon Block Styles */
+.icon-block {
+  width: clamp(40px, 8vw, 70px);
+  height: clamp(40px, 8vw, 70px);
+  position: absolute;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  transform-origin: center;
+}
+
+.icon-block:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 20px var(--icon-color);
+  background: rgba(255, 255, 255, 0.2);
+  z-index: 10;
+}
+
+.icon-block i {
+  color: var(--icon-color);
+  animation: Rotate-reverse 30s linear infinite;
+}
+
+/* Position 12 icons in outer circle (30° increments) */
+.icon-block:nth-child(1) { --icon-color: #E34F26; top: 0%; left: 50%; transform: translate(-50%, -50%); } /* HTML - 0° */
+.icon-block:nth-child(2) { --icon-color: #264DE4; top: 6.7%; right: 25%; transform: translate(50%, -50%); } /* CSS - 30° */
+.icon-block:nth-child(3) { --icon-color: #F7DF1E; top: 25%; right: 6.7%; transform: translate(50%, -50%); } /* JS - 60° */
+.icon-block:nth-child(4) { --icon-color: #7952B3; top: 50%; right: 0%; transform: translate(50%, -50%); } /* Bootstrap - 90° */
+
+
+
+
+.icon-block:nth-child(5) { --icon-color: #61DAFB; top: 65%; right: 6.7%; transform: translate(50%, 50%); } /* React - 120° */
+.icon-block:nth-child(6) { --icon-color: #DD0031; top: 95%; right: 25%; transform: translate(50%, -50%); } /* Angular - 150° */
+.icon-block:nth-child(7) { --icon-color: #007396; top: 95%; left: 15%; transform: translate(50%, -50%); } /* Java - 180° */ 
+.icon-block:nth-child(8) { --icon-color: #FF2D20; top:88%; left: 50%; transform: translate(-50%, 50%); } /* Laravel - 210° */
+
+
+
+
+.icon-block:nth-child(9) { --icon-color: #3DDC84; top: 65%; left: 6.7%; transform: translate(-50%, 50%); } /* Android - 240° */
+.icon-block:nth-child(10) { --icon-color: #000000; top: 50%; left: 0%; transform: translate(-50%, -50%); } /* Apple - 270° */
+.icon-block:nth-child(11) { --icon-color: #3776AB; top: 25%; left: 6.7%; transform: translate(-50%, -50%); } /* Python - 300° */
+.icon-block:nth-child(12) { --icon-color: #339933; top: 6.7%; left: 25%; transform: translate(-50%, -50%); } /* Node.js - 330° */
+/* Inner Circle with 8 icons */
+.circle {
+  animation: circle-rotate 25s linear infinite;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  width: 60%;
+  height: 60%;
+  border: 3px solid #f72585;
+  border-radius: 50%;
+}
+
+.circle .icon-block {
+  width: clamp(35px, 7vw, 60px);
+  height: clamp(35px, 7vw, 60px);
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.circle .icon-block i {
+  animation: img-rotate 25s linear infinite;
+}
+
+/* Position 8 inner circle icons with brand colors */
+.circle .icon-block:nth-child(1) { --icon-color: #4479A1; top: 0; left: 50%; transform: translate(-50%, -50%); } /* PHP */
+.circle .icon-block:nth-child(2) { --icon-color: #0769AD; top: 50%; right: 0; transform: translate(50%, -50%); } /* WordPress */
+.circle .icon-block:nth-child(3) { --icon-color: #000000; top: 85%; left: 50%; transform: translate(-50%, 50%); } /* GitHub */
+.circle .icon-block:nth-child(4) { --icon-color: #F05032; top: 50%; left: 0; transform: translate(-50%, -50%); } /* Git */
+.circle .icon-block:nth-child(5) { --icon-color: #007ACC; top: 15%; right: 15%; transform: translate(50%, -50%); } /* Microsoft */
+.circle .icon-block:nth-child(6) { --icon-color: #2496ED; top: 70%; right: 15%; transform: translate(50%, 50%); } /* Docker */
+.circle .icon-block:nth-child(7) { --icon-color: #F34F29; top: 70%; left: 15%; transform: translate(-50%, 50%); } /* Red Hat */
+.circle .icon-block:nth-child(8) { --icon-color: #00D1B2; top: 15%; left: 15%; transform: translate(-50%, -50%); } /* Vue.js */
+
+/* Center Developer Logo */
+.center-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(80px, 20vw, 150px);
+  height: clamp(80px, 20vw, 150px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dev-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #4cc9f0, #f72585);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(1.5rem, 5vw, 3rem);
+  font-weight: bold;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  animation: pulse 4s ease-in-out infinite;
+}
+.circle-img{
+max-width: 250px !important;
+}
+/* Animations */
+@keyframes Rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes Rotate-reverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+@keyframes circle-rotate {
+  from { transform: translate(-50%, -50%) rotate(45deg); }
+  to { transform: translate(-50%, -50%) rotate(405deg); }
+}
+
+@keyframes img-rotate {
+  from { transform: rotate(-45deg); }
+  to { transform: rotate(-405deg); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Font Awesome Icons */
+        </style>
+<body>  
 
     <!-- Preloader Start -->
 	<div class="preloader">
@@ -61,13 +394,9 @@
 					<div class="collapse navbar-collapse main-menu">
                         <div class="nav-menu-wrapper">
                             <ul class="navbar-nav mr-auto" id="menu">
-                                <li class="nav-item submenu"><a class="nav-link" href="index-2.html">Home</a>
-                                    <ul>
-                                        <li class="nav-item"><a class="nav-link" href="index.html">Home - Main</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="index-image.html">Home - Image</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="index-slider.html">Home - Slider</a></li>
-                                    </ul>
-                                </li>                                
+                                <li class="nav-item"><a class="nav-link" href="index.html">Home</a>
+                                
+                                    </li>                                
                                 <li class="nav-item"><a class="nav-link" href="about.html">About Us</a>
                                 <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
                                 <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
@@ -699,7 +1028,8 @@
                 <div class="col-lg-12">
                     <!-- Section Title Start -->
                     <div class="section-title text-center">
-                        <h3 class="wow fadeInUp" style="font-size: x-large;">Industries We Serve</h3>
+                        <h3 class="wow fadeInUp" style="font-size: x-large;">Specialized</h3>
+                        <h2 class="text-anime-style-2" data-cursor="-opaque">Industries <span>We Serve</span></h2>
                         <p class="wow fadeInUp">
                             At Devlux Infotech, we cater to a diverse range of industries, providing tailored software development 
                             solutions that drive growth and efficiency.
@@ -709,71 +1039,81 @@
                 </div>
             </div>
     
-            <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="industry-item wow fadeInUp">
-                        <h3>Healthcare</h3>
-                        <p>Transforming healthcare with secure, innovative software solutions that enhance patient care, streamline operations, and ensure compliance with industry standards.</p>
+           
+                
+                <div class="row">
+                    <!-- Healthcare -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="industry-item wow fadeInUp">
+                            <h3><span class="gradient-icon animate-gradient healthcare-animate" style="--gradient-start: #aa0101; --gradient-end: #f4e4d7;"><i class="fas fa-heartbeat"></i></span> Healthcare</h3>
+                            <p>Transforming healthcare with secure, innovative software solutions that enhance patient care, streamline operations, and ensure compliance with industry standards.</p>
+                        </div>
+                    </div>
+                
+                    <!-- Fintech -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="industry-item wow fadeInUp">
+                            <h3><span class="gradient-icon animate-gradient fintech-animate" style="--gradient-start: #0056a2; --gradient-end: #c5fcff;"><i class="fas fa-coins"></i></span> Fintech</h3>
+                            <p>Revolutionizing fintech with robust, scalable software solutions that enhance financial services, ensure security, and drive digital transformation.</p>
+                        </div>
+                    </div>
+                
+                    <!-- eLearning -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="industry-item wow fadeInUp">
+                            <h3><span class="gradient-icon animate-gradient elearning-animate" style="--gradient-start: #d6039a; --gradient-end: #fbc2eb;"><i class="fas fa-graduation-cap"></i></span> eLearning</h3>
+                            <p>Enhancing eLearning experiences with interactive, scalable software solutions that foster engagement and streamline content delivery.</p>
+                        </div>
+                    </div>
+                
+                    <!-- Manufacturing -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="industry-item wow fadeInUp">
+                            <h3><span class="gradient-icon animate-gradient manufacturing-animate" style="--gradient-start: #389200; --gradient-end: #ceeaf8;"><i class="fas fa-industry"></i></span> Manufacturing</h3>
+                            <p>Optimizing manufacturing with intelligent software solutions that improve efficiency and streamline operations.</p>
+                        </div>
+                    </div>
+                
+                    <!-- Retail -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="industry-item wow fadeInUp">
+                            <h3><span class="gradient-icon animate-gradient retail-animate" style="--gradient-start: #c7dd00; --gradient-end: #c3e8fa;"><i class="fas fa-shopping-cart"></i></span> Retail and E-commerce</h3>
+                            <p>Transforming retail with innovative solutions that enhance customer experiences and streamline operations.</p>
+                        </div>
+                    </div>
+                
+                    <!-- Travel -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="industry-item wow fadeInUp">
+                            <h3><span class="gradient-icon animate-gradient travel-animate" style="--gradient-start: #ac3f00; --gradient-end: #fad0d7;"><i class="fas fa-plane"></i></span> Travel and Hospitality</h3>
+                            <p>Enhancing travel and hospitality with software solutions that streamline guest services and improve customer satisfaction.</p>
+                        </div>
+                    </div>
+                
+                    <!-- Logistics -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="industry-item wow fadeInUp">
+                            <h3><span class="gradient-icon animate-gradient logistics-animate" style="--gradient-start: #750387; --gradient-end: #f6cfeb;"><i class="fas fa-truck"></i></span> Logistics</h3>
+                            <p>Streamlining logistics with advanced solutions that optimize supply chain management and ensure timely delivery.</p>
+                        </div>
+                    </div>
+                
+                    <!-- Insurance -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="industry-item wow fadeInUp">
+                            <h3><span class="gradient-icon animate-gradient insurance-animate" style="--gradient-start: #9b5a00; --gradient-end: #fcb69f;"><i class="fas fa-shield-alt"></i></span> Insurance</h3>
+                            <p>Empowering the insurance industry with innovative solutions that enhance policy management and claims processing.</p>
+                        </div>
+                    </div>
+                
+                    <!-- Restaurant -->
+                    <div class="col-lg-4 col-md-6">
+                        <div class="industry-item wow fadeInUp">
+                            <h3><span class="gradient-icon animate-gradient restaurant-animate" style="--gradient-start: #610327; --gradient-end: #fad0c4;"><i class="fas fa-utensils"></i></span> Restaurant</h3>
+                            <p>Optimizing restaurant management with software solutions that enhance order processing and improve efficiency.</p>
+                        </div>
                     </div>
                 </div>
-    
-                <div class="col-lg-4 col-md-6">
-                    <div class="industry-item wow fadeInUp">
-                        <h3>Fintech</h3>
-                        <p>Revolutionizing fintech with robust, scalable software solutions that enhance financial services, ensure security, and drive digital transformation.</p>
-                    </div>
-                </div>
-    
-                <div class="col-lg-4 col-md-6">
-                    <div class="industry-item wow fadeInUp">
-                        <h3>eLearning</h3>
-                        <p>Enhancing eLearning experiences with interactive, scalable software solutions that foster engagement and streamline content delivery.</p>
-                    </div>
-                </div>
-    
-                <div class="col-lg-4 col-md-6">
-                    <div class="industry-item wow fadeInUp">
-                        <h3>Manufacturing</h3>
-                        <p>Optimizing manufacturing with intelligent software solutions that improve efficiency and streamline operations.</p>
-                    </div>
-                </div>
-    
-                <div class="col-lg-4 col-md-6">
-                    <div class="industry-item wow fadeInUp">
-                        <h3>Retail and E-commerce</h3>
-                        <p>Transforming retail with innovative solutions that enhance customer experiences and streamline operations.</p>
-                    </div>
-                </div>
-    
-                <div class="col-lg-4 col-md-6">
-                    <div class="industry-item wow fadeInUp">
-                        <h3>Travel and Hospitality</h3>
-                        <p>Enhancing travel and hospitality with software solutions that streamline guest services and improve customer satisfaction.</p>
-                    </div>
-                </div>
-    
-                <div class="col-lg-4 col-md-6">
-                    <div class="industry-item wow fadeInUp">
-                        <h3>Logistics</h3>
-                        <p>Streamlining logistics with advanced solutions that optimize supply chain management and ensure timely delivery.</p>
-                    </div>
-                </div>
-    
-                <div class="col-lg-4 col-md-6">
-                    <div class="industry-item wow fadeInUp">
-                        <h3>Insurance</h3>
-                        <p>Empowering the insurance industry with innovative solutions that enhance policy management and claims processing.</p>
-                    </div>
-                </div>
-    
-                <div class="col-lg-4 col-md-6">
-                    <div class="industry-item wow fadeInUp">
-                        <h3>Restaurant</h3>
-                        <p>Optimizing restaurant management with software solutions that enhance order processing and improve efficiency.</p>
-                    </div>
-                </div>
-    
-            </div>
         </div>
     </div>
     
@@ -1113,7 +1453,7 @@
     <!-- Creative Tools Section End -->
 
     <!-- How It Work Section Start-->
-    <div class="how-it-work bg-section">
+    <div class="how-it-work">
         <div class="container">
             <div class="row section-row align-items-center">
                 <div class="col-lg-8">
@@ -1135,13 +1475,91 @@
             </div>
 
             <div class="row align-items-center">
-                <div class="col-lg-6">
+                <div class="col-lg-7">
                     <!-- How It Work Images Start-->
                     <div class="how-it-work-images">
                         <!-- How Work Image Circle Start-->
-                        <div class="how-work-image-circle">
-                            <img src="images/Programming-Language.png" alt="">
-                        </div>
+                          <!-- Our Work Section End -->
+                          <section class="main-container">
+                            <div class="main">
+                              <!-- Outer circle with 12 main technologies -->
+                              <div class="big-circle">
+                                <div class="icon-block" style="--icon-color: #e34f26">
+                                  <i class="fab fa-html5"></i>
+                                </div>
+                                <div class="icon-block" style="--icon-color: #264de4">
+                                  <i class="fab fa-css3-alt"></i>
+                                </div>
+                                <div class="icon-block" style="--icon-color: #f7df1e">
+                                  <i class="fab fa-js"></i>
+                                </div>
+                                <div class="icon-block" style="--icon-color: #7952b3">
+                                  <i class="fab fa-bootstrap"></i>
+                                </div>
+                                <div class="icon-block" style="--icon-color: #61dafb">
+                                  <i class="fab fa-react"></i>
+                                </div>
+                                <div class="icon-block" style="--icon-color: #dd0031">
+                                  <i class="fab fa-angular"></i>
+                                </div>
+                                <div class="icon-block" style="--icon-color: #007396">
+                                  <i class="fab fa-java"></i>
+                                </div>
+                                <div class="icon-block" style="--icon-color: #ff2d20">
+                                  <i class="fab fa-laravel"></i>
+                                </div>
+                                <div class="icon-block" style="--icon-color: #3ddc84">
+                                  <i class="fab fa-android"></i>
+                                </div>
+                                <div class="icon-block" style="--icon-color: #000000">
+                                  <i class="fab fa-apple"></i>
+                                </div>
+                                <div class="icon-block" style="--icon-color: #3776ab">
+                                  <i class="fab fa-python"></i>
+                                </div>
+                                <div class="icon-block" style="--icon-color: #339933">
+                                  <i class="fab fa-node-js"></i>
+                                </div>
+                              </div>
+                              
+                              <!-- Inner circle with 8 additional technologies -->
+                              <div class="circle">
+                                <div class="icon-block" style="--icon-color: #4479a1">
+                                  <i class="fab fa-php"></i>
+                                </div>
+                                <div class="icon-block" style="--icon-color: #0769ad">
+                                  <i class="fab fa-wordpress"></i>
+                                </div>
+                                <div class="icon-block" style="--icon-color: #000000">
+                                  <i class="fab fa-github"></i>
+                                </div>
+                                <div class="icon-block" style="--icon-color: #f05032">
+                                  <i class="fab fa-git-alt"></i>
+                                </div>
+                                <div class="icon-block" style="--icon-color: #007acc">
+                                  <i class="fab fa-microsoft"></i>
+                                </div>
+                                <div class="icon-block" style="--icon-color: #2496ed">
+                                  <i class="fab fa-docker"></i>
+                                </div>
+                                <div class="icon-block" style="--icon-color: #f34f29">
+                                  <i class="fab fa-redhat"></i>
+                                </div>
+                                <div class="icon-block" style="--icon-color: #00d1b2">
+                                  <i class="fab fa-vuejs"></i>
+                                </div>
+                              </div>
+                              
+                              <!-- Center logo with animated gradient -->
+                              <div class="center-logo">
+                                <div class="dev-avatar">
+                                <img class="circle-img" src="images/DevLux-transparent.png" alt="">
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Font Awesome CDN -->
+                          </section>
                         <!-- How Work Image Circle End-->
 
                         <!-- How It Work Image Start-->
@@ -1155,7 +1573,7 @@
                     <!-- How It Work Images End-->
                 </div>
 
-                <div class="col-lg-6">
+                <div class="col-lg-5">
                     <!-- Work FAQ Accordion Start -->
                     <div class="work-faq-accordion" id="workaccordion">
                         <!-- Work FAQ Item Start -->

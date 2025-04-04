@@ -35,6 +35,427 @@
 	<!-- Main Custom Css -->
 	<link href="css/custom.css" rel="stylesheet" media="screen">
 </head>
+<style>
+    
+.main-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.main {
+  width: 600px;
+  height: 600px;
+  position: relative;
+}
+
+/* Big Circle with 8 icons */
+.big-circle {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  border: 3px solid #4cc9f0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: Rotate 30s linear infinite;
+}
+
+/* Positioning for 8 icons in outer circle */
+.icon-block {
+  width: 70px;
+  height: 70px;
+  position: absolute;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, #16213e, #1a1a2e);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.icon-block:hover {
+  transform: scale(1.1) translateZ(0);
+  box-shadow: 0 6px 12px rgba(76, 201, 240, 0.4);
+}
+
+.icon-block img {
+  width: 60%;
+  height: 60%;
+  object-fit: contain;
+  filter: brightness(0) invert(0.8);
+  animation: Rotate-reverse 30s linear infinite;
+}
+
+/* Position each of the 8 outer icons */
+.icon-block:nth-child(1) { top: 0; left: 50%; transform: translate(-50%, -50%); }
+.icon-block:nth-child(2) { top: 15%; right: 15%; transform: translate(50%, -50%); }
+.icon-block:nth-child(3) { top: 50%; right: 0; transform: translate(50%, -50%); }
+.icon-block:nth-child(4) { bottom: 15%; right: 15%; transform: translate(50%, 50%); }
+.icon-block:nth-child(5) { bottom: 0; left: 50%; transform: translate(-50%, 50%); }
+.icon-block:nth-child(6) { bottom: 15%; left: 15%; transform: translate(-50%, 50%); }
+.icon-block:nth-child(7) { top: 50%; left: 0; transform: translate(-50%, -50%); }
+.icon-block:nth-child(8) { top: 15%; left: 15%; transform: translate(-50%, -50%); }
+
+/* Inner Circle with 4 icons */
+.circle {
+  animation: circle-rotate 25s linear infinite;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  width: 60%;
+  height: 60%;
+  border: 3px solid #f72585;
+  border-radius: 50%;
+}
+
+.circle .icon-block {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(145deg, #1a1a2e, #16213e);
+}
+
+.circle .icon-block img {
+  animation: img-rotate 25s linear infinite;
+}
+
+/* Position inner circle icons */
+.circle .icon-block:nth-child(1) { top: 0; left: 50%; transform: translate(-50%, -50%); }
+.circle .icon-block:nth-child(2) { top: 50%; right: 0; transform: translate(50%, -50%); }
+.circle .icon-block:nth-child(3) { bottom: 0; left: 50%; transform: translate(-50%, 50%); }
+.circle .icon-block:nth-child(4) { top: 50%; left: 0; transform: translate(-50%, -50%); }
+
+/* Center Developer Logo */
+.center-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dev-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #4cc9f0, #f72585);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  font-weight: bold;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Animations */
+@keyframes Rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes Rotate-reverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+@keyframes circle-rotate {
+  from { transform: translate(-50%, -50%) rotate(45deg); }
+  to { transform: translate(-50%, -50%) rotate(405deg); }
+}
+
+@keyframes img-rotate {
+  from { transform: rotate(-45deg); }
+  to { transform: rotate(-405deg); }
+}
+</style>
+
+<style>
+
+/* CSS Reset and Base Styles */
+:root {
+  --bg-color: #1a1a2e;
+  --primary-accent: #4cc9f0;
+  --secondary-accent: #f72585;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-color);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.main-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.main {
+  width: min(90vw, 700px);
+  height: min(90vw, 700px);
+  position: relative;
+}
+
+/* Big Circle with 12 icons */
+.big-circle {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  border: 3px solid var(--primary-accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: Rotate 40s linear infinite;
+}
+
+/* Icon Block Styles */
+.icon-block {
+  width: clamp(50px, 5vw, 70px);
+  height: clamp(50px, 5vw, 70px);
+  position: absolute;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  color: white;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  transform-origin: center;
+}
+
+.icon-block:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 20px var(--icon-color);
+  background: rgba(255, 255, 255, 0.2);
+  z-index: 10;
+}
+
+.icon-block i {
+  color: var(--icon-color);
+  animation: Rotate-reverse 40s linear infinite;
+}
+
+/* Position 12 icons in outer circle */
+.big-circle .icon-block:nth-child(1) { 
+  top: 5%; 
+  left: 50%; 
+  transform: translateX(-50%); 
+}
+.big-circle .icon-block:nth-child(2) { 
+  top: 15%; 
+  right: 15%; 
+}
+.big-circle .icon-block:nth-child(3) { 
+  top: 30%; 
+  right: 5%; 
+}
+.big-circle .icon-block:nth-child(4) { 
+  top: 50%; 
+  right: 0; 
+  transform: translateY(-50%); 
+}
+.big-circle .icon-block:nth-child(5) { 
+  bottom: 30%; 
+  right: 5%; 
+}
+.big-circle .icon-block:nth-child(6) { 
+  bottom: 15%; 
+  right: 15%; 
+}
+.big-circle .icon-block:nth-child(7) { 
+  bottom: 5%; 
+  left: 50%; 
+  transform: translateX(-50%); 
+}
+.big-circle .icon-block:nth-child(8) { 
+  bottom: 15%; 
+  left: 15%; 
+}
+.big-circle .icon-block:nth-child(9) { 
+  bottom: 30%; 
+  left: 5%; 
+}
+.big-circle .icon-block:nth-child(10) { 
+  top: 50%; 
+  left: 0; 
+  transform: translateY(-50%); 
+}
+.big-circle .icon-block:nth-child(11) { 
+  top: 30%; 
+  left: 5%; 
+}
+.big-circle .icon-block:nth-child(12) { 
+  top: 15%; 
+  left: 15%; 
+}
+
+/* Inner Circle with 8 icons */
+.circle {
+  animation: circle-rotate 30s linear infinite;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  height: 60%;
+  border: 3px solid var(--secondary-accent);
+  border-radius: 50%;
+}
+
+.circle .icon-block {
+  width: clamp(40px, 4vw, 60px);
+  height: clamp(40px, 4vw, 60px);
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+}
+
+.circle .icon-block i {
+  animation: img-rotate 30s linear infinite;
+}
+
+/* Position 8 inner circle icons */
+.circle .icon-block:nth-child(1) { 
+  top: 10%; 
+  left: 50%; 
+  transform: translateX(-50%); 
+}
+.circle .icon-block:nth-child(2) { 
+  top: 25%; 
+  right: 10%; 
+}
+.circle .icon-block:nth-child(3) { 
+  top: 50%; 
+  right: 0; 
+  transform: translateY(-50%); 
+}
+.circle .icon-block:nth-child(4) { 
+  bottom: 25%; 
+  right: 10%; 
+}
+.circle .icon-block:nth-child(5) { 
+  bottom: 10%; 
+  left: 50%; 
+  transform: translateX(-50%); 
+}
+.circle .icon-block:nth-child(6) { 
+  bottom: 25%; 
+  left: 10%; 
+}
+.circle .icon-block:nth-child(7) { 
+  top: 50%; 
+  left: 0; 
+  transform: translateY(-50%); 
+}
+.circle .icon-block:nth-child(8) { 
+  top: 25%; 
+  left: 10%; 
+}
+
+/* Center Logo */
+.center-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 25%;
+  height: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dev-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: linear-gradient(145deg, var(--primary-accent), var(--secondary-accent));
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(1.5rem, 3vw, 3rem);
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+  animation: pulse 4s ease-in-out infinite;
+}
+
+.dev-avatar i {
+  filter: drop-shadow(0 0 5px rgba(0,0,0,0.5));
+}
+
+/* Animations */
+@keyframes Rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes Rotate-reverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+@keyframes circle-rotate {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes img-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+
+@keyframes pulse {
+  0% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.1); }
+  100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .big-circle {
+    animation-duration: 60s;
+  }
+  
+  .circle {
+    animation-duration: 45s;
+  }
+  
+  .icon-block i {
+    animation-duration: 60s;
+  }
+  
+  .circle .icon-block i {
+    animation-duration: 45s;
+  }
+}
+
+
+
+
+
+</style>
+
+
 <body>
 
     <!-- Preloader Start -->
@@ -518,8 +939,7 @@
             </div>
         </div>
     </div>
-    <!-- Our Work Section End -->
-
+ 
     <!-- Creative Tools Section Start -->
     <div class="creative-tools">
         <div class="container">
@@ -679,15 +1099,7 @@
                         <div class="how-work-image-circle">
                             <img src="images/how-work-image-circle.png" alt="">
                         </div>
-                        <!-- How Work Image Circle End-->
-
-                        <!-- How It Work Image Start-->
-                        <div class="how-it-work-image">
-                            <figure class="image-anime">
-                                <img src="images/how-it-work-image.jpg" alt="">
-                            </figure>
-                        </div>
-                        <!-- How It Work Image End-->
+                       
                     </div>
                     <!-- How It Work Images End-->
                 </div>

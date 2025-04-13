@@ -96,6 +96,7 @@ img{
 
 a{
 	text-decoration: none;
+	color: var(--accent-color);
 }
 
 a:hover{
@@ -108,11 +109,6 @@ a:focus{
 	outline: 0;
 }
 
-html,
-body{
-	width: 100%;
-	overflow-x: clip;
-}
 
 .container{
 	max-width: 1300px;
@@ -984,7 +980,7 @@ header.main-header .header-sticky.active{
 	position: relative;
 	padding: 100px 0;
 }
-
+/* 
 .our-services::before{
 	content: '';
     display: block;
@@ -999,7 +995,7 @@ header.main-header .header-sticky.active{
     animation: circlerotate 12s infinite linear;
 	animation-direction: alternate;
     z-index: -1;
-}
+} */
 
 @keyframes circlerotate{
 	from{
@@ -1623,8 +1619,7 @@ header.main-header .header-sticky.active{
     position: absolute;
     left: -50px;
     top: 100px;
-	transform: rotate(25deg);
-    background: url(../images/section-bg-universe.gif) no-repeat;
+   
     background-position: left center;
     background-size: contain;
 	padding: 100px 0;
@@ -1771,7 +1766,7 @@ header.main-header .header-sticky.active{
 	padding: 100px 0;
 }
 
-.our-achievements::before{
+/* .our-achievements::before{
     content: '';
     display: block;
     position: absolute;
@@ -1785,7 +1780,7 @@ header.main-header .header-sticky.active{
     animation: squrerotate 10s infinite linear;
     animation-direction: alternate;
     z-index: -1;
-}
+} */
 
 @keyframes squrerotate{
 	0%{
@@ -2208,7 +2203,7 @@ header.main-header .header-sticky.active{
 	padding: 100px 0 70px;
 }
 
-.our-blog::before{
+/* .our-blog::before{
     content: '';
     display: block;
     position: absolute;
@@ -2222,7 +2217,7 @@ header.main-header .header-sticky.active{
     animation: roundrotate 12s infinite linear;
     animation-direction: alternate;
     z-index: -1;
-}
+} */
 
 @keyframes roundrotate{
 	from{
@@ -2799,36 +2794,8 @@ header.main-header .header-sticky.active{
 	padding: 100px 0 70px;
 }
 
-.page-services:before{
-	content: '';
-    display: block;
-    position: absolute;
-    left: -80px;
-    top: 100px;
-    transform: rotate(24deg);
-    background-position: left center;
-    background-size: contain;
-    width: 265px;
-    height: 178px;
-    animation: tuberotate 12s infinite linear;
-    animation-direction: alternate;
-    z-index: -1;
-}
 
-.page-services:after{
-	content: '';
-    display: block;
-    position: absolute;
-    right: -80px;
-    bottom: 150px;
-    background-position: right center;
-    background-size: contain;
-    width: 254px;
-    height: 254px;
-    animation: circlerotate 12s infinite linear;
-    animation-direction: alternate;
-    z-index: -1;
-}
+
 
 .service-item {
     position: relative;
@@ -2837,7 +2804,7 @@ header.main-header .header-sticky.active{
     margin-bottom: 30px;
     padding: 24px;
     transition: all 0.4s ease-in-out;
-    height: 250px; /* Set a fixed height for uniform size */
+    height: 300px; /* Set a fixed height for uniform size */
     display: flex;
     flex-direction: column;
     justify-content: center; /* Center content vertically */
@@ -2886,7 +2853,7 @@ header.main-header .header-sticky.active{
 
 .service-image a{
 	display: block;
-	border-radius: 30px;
+	
 	overflow: hidden;
 	cursor: none;
 }
@@ -2894,10 +2861,11 @@ header.main-header .header-sticky.active{
 .service-image{
 	position: relative;
 	display: block;
-	border-radius: 30px;
+
 	overflow: hidden;
 	margin-bottom: 30px;
 	z-index: 1;
+	font-size: 50px;
 }
 
 .service-image img{
@@ -2951,6 +2919,7 @@ header.main-header .header-sticky.active{
 
 .service-item:hover .service-btn a{
 	background-color: var(--accent-color);
+	color: var(--bg-color);
 }
 
 .service-btn a img{
@@ -2963,6 +2932,7 @@ header.main-header .header-sticky.active{
 .service-item:hover .service-btn a img{
 	filter: brightness(0) invert(0);
 	transform: rotate(0deg);
+
 }
 
 .creative-tools.service-creative-tools::before{
@@ -4617,7 +4587,7 @@ header.main-header .header-sticky.active{
 	padding: 100px 0 50px;
 }
 
-.page-contact-us:before{
+/* .page-contact-us:before{
 	content: '';
     display: block;
     position: absolute;
@@ -4631,7 +4601,7 @@ header.main-header .header-sticky.active{
     animation: roundrotate 12s infinite linear;
     animation-direction: alternate;
     z-index: -1;
-}
+} */
 
 .page-contact-us:after{
 	content: '';

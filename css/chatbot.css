@@ -237,8 +237,17 @@
     cursor: pointer;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
+    animation: floatUpDown 2s ease-in-out infinite;
 }
-
+/* Keyframes for the up-and-down movement */
+@keyframes floatUpDown {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }   
+}
 .chatbot-icon:hover {
     background-color: var(--accent-light--color);
     transform: scale(1.1);

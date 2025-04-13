@@ -37,6 +37,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="./css/chatbot.css">
+    <script src="chatbot.js" defer></script>
 </head>
 
 <style>
@@ -382,56 +383,7 @@ max-width: 250px !important;
 	<!-- Preloader End -->
 
     <!-- Header Start -->
-	<header class="main-header">
-		<div class="header-sticky">
-			<nav class="navbar navbar-expand-lg">
-				<div class="container">
-					<!-- Logo Start -->
-					<a class="navbar-brand" href="index-2.html">
-						<img src="images/logo.svg" alt="Logo">
-					</a>
-					<!-- Logo End -->
-
-					<!-- Main Menu Start -->
-					<div class="collapse navbar-collapse main-menu">
-                        <div class="nav-menu-wrapper">
-                            <ul class="navbar-nav mr-auto" id="menu">
-                                <li class="nav-item"><a class="nav-link" href="index.html">Home</a>
-                                
-                                    </li>                                
-                                <li class="nav-item"><a class="nav-link" href="about.html">About Us</a>
-                                <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
-                                <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
-                                <li class="nav-item submenu"><a class="nav-link" href="#">Pages</a>
-                                    <ul>                                        
-                                        <li class="nav-item"><a class="nav-link" href="service-single.html">Service Details</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="portfolio-single.html">Portfolio Details</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="blog-single.html">Blog Details</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="team.html">Our Team</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="team-single.html">Team Details</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing Plan</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="testimonial.html">Testimonials</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="faqs.html">FAQs</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="404.html">404</a></li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item highlighted-menu"><a class="nav-link" href="contact.html">Contact Us</a></li>                           
-                            </ul>
-                        </div>
-                        <!-- Header Btn Start -->
-                        <div class="header-btn">
-                            <a href="contact.html" class="btn-default">Contact Us</a>
-                        </div>
-                        <!-- Header Btn End -->
-					</div>
-					<!-- Main Menu End -->
-					<div class="navbar-toggle"></div>
-				</div>
-			</nav>
-			<div class="responsive-menu"></div>
-		</div>
-	</header>
+	
 	<!-- Header End -->
 
     <!-- Hero Section Start -->
@@ -2426,7 +2378,7 @@ max-width: 250px !important;
             <div class="modal-header">
                 <span class="discount-badge">30% OFF</span>
                 <h2>Limited Time Offer!</h2>
-                <p>Get 30% discount on your first project</p>
+                <p>Get 30% discount  on your  first project</p>
             </div>
             <div class="modal-body">
                 <img src="./images/devlux/devlux_discount.png" alt="Special Offer" class="modal-image">
@@ -2446,11 +2398,7 @@ max-width: 250px !important;
                         </div>
                         
                     </div>
-                    <div class="form-group">
-                        <label for="modalEmail">Email</label>
-                        <input type="email" id="modalEmail" name="email" placeholder="Enter your email address" required>
-                        <div class="error-message" id="emailError">Please enter valid email</div>
-                    </div>
+
                     <button type="submit" class="submit-btn">CLAIM MY 30% DISCOUNT</button>
                     <p class="terms-text">Offer valid for new customers only. By submitting, you agree to our terms.</p>
                 </form>
@@ -2471,7 +2419,9 @@ max-width: 250px !important;
             <div class="chatbot-messages" id="chatbotMessages"></div>
         </div>
     </div>
+    <script src="js/common-header.js"></script>
     <script src="./js/chatbot.js"></script>
+    <script src="./js/discountmodal.js"></script>
     <!-- Jquery Library File -->
     <script src="js/jquery-3.7.1.min.js"></script>
     <!-- Bootstrap js file -->

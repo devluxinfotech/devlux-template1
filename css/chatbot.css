@@ -1,8 +1,21 @@
 
+:root{
+	--primary-color			: #D7D7D7;
+	--secondary-color		: #1C1C1C;
+	--text-color			: #A0A0A0;
+	--accent-color			: #6b4ab5;
+    --accent-light-color	: #836db3;
+	--bg-color				: #161616;
+	--white-color			: #FFFFFF;
+	--divider-color			: #FFFFFF1A;
+	--dark-divider-color	: #1C1C1C33;
+	--error-color			: rgb(230, 87, 87);
+	--default-font			: "Montserrat", serif;
+}
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
+   
     flex: 1;
 }
 
@@ -42,7 +55,10 @@
 .modal-header {
     padding: 20px;
     text-align: center;
-    position: relative;
+   display: flex;
+   justify-self: center;
+   width: 90%;
+   gap: 20px;
 }
 
 .modal-header h2 {
@@ -55,8 +71,8 @@
 .discount-badge {
     position: absolute;
 
-    top: 15px;
-    right: 15px;
+    top: 6px;
+    right: -6px;
     background-color: #ff4757;
     color: white;
     padding: 8px 15px;
@@ -149,8 +165,8 @@
 
 .close-modal {
     position: absolute;
-    top: 15px;
-    right: 15px;
+    top: 0px;
+    right: 0px;
     background: rgba(0,0,0,0.2);
     border: none;
     border-radius: 50%;
@@ -213,7 +229,7 @@
 .chatbot-icon {
     width: 60px;
     height: 60px;
-    background-color: #4a6bff;
+    background-color: var(--accent-color);
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -224,7 +240,7 @@
 }
 
 .chatbot-icon:hover {
-    background-color: #3a5bef;
+    background-color: var(--accent-light--color);
     transform: scale(1.1);
 }
 
@@ -245,7 +261,7 @@
 }
 
 .chatbot-header {
-    background-color: #4a6bff;
+    background-color: var(--accent-color);
     color: white;
     padding: 15px;
     display: flex;
@@ -287,7 +303,7 @@
 }
 
 .user-message {
-    background-color: #4a6bff;
+    background-color: var(--accent-color);
     color: white;
     align-self: flex-end;
     border-bottom-right-radius: 5px;
@@ -301,7 +317,7 @@
 }
 
 .option-btn {
-    background-color: #4a6bff;
+    background-color: var(--accent-color);
     color: white;
     border: none;
     border-radius: 20px;
@@ -314,5 +330,5 @@
 }
 
 .option-btn:hover {
-    background-color: #3a5bef;
+    background-color: var(--accent-light-color);
 }

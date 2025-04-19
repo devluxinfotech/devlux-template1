@@ -2305,6 +2305,7 @@ header.main-header .header-sticky.active{
 
 .footer-section{
 	position: relative;
+	margin-top: 100px;
 }
 
 .footer-section::before{

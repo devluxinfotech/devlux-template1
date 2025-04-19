@@ -436,11 +436,12 @@ header.main-header{
 	position: relative;
 	border-bottom: 1px solid var(--divider-color);
 	z-index: 100;
+	margin-top: -20px;
 }
 
 header.main-header .header-sticky{
 	position: relative;
-	top: 0;
+	top: 0px;
 	z-index: 100;
 }
 
